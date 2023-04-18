@@ -12,7 +12,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        $b = Blog::get();
+        return view('blog.create', compact('b'));
     }
 
     /**
@@ -57,7 +58,7 @@ class BlogController extends Controller
     public function edit(string $id)
     {
         $b = Blog::find($id);
-        return view('category.edit')->with('success', 'Branch Created successfully');
+        return view('blog.edit', compact('b'))->with('success', 'Branch Created successfully');
     }
 
     /**
