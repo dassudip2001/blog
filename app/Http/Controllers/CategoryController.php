@@ -14,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('caregory.create');
+        $b = Category::get();
+        return view('category.create', compact('b'));
     }
 
     /**
@@ -55,8 +56,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        $b=Category::find($id);
-        return view('category.edit')->with('success', 'Branch Created successfully');
+        $b = Category::find($id);
+        return view('category.edit', compact('b'))->with('success', 'Branch Created successfully');
     }
 
     /**
