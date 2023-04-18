@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $b = Category::get();
+        $b = Category::latest()->paginate(5);
         return view('category.create', compact('b'));
     }
 
@@ -29,7 +29,7 @@ class CategoryController extends Controller
 
         try {
             $b->save();
-            return redirect(route('category.index'))->with('success', 'Branch Created successfully');
+            return redirect(route('category.index'))->with('success', 'Category  Created successfully');
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -57,7 +57,7 @@ class CategoryController extends Controller
     public function edit(string $id)
     {
         $b = Category::find($id);
-        return view('category.edit', compact('b'))->with('success', 'Branch Created successfully');
+        return view('category.edit', compact('b'))->with('success', 'Category Created successfully');
     }
 
     /**
@@ -71,7 +71,7 @@ class CategoryController extends Controller
 
         try {
             $b->save();
-            return redirect(route('category.index'))->with('success', 'Branch Created successfully');
+            return redirect(route('category.index'))->with('success', 'Category Created successfully');
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -83,6 +83,6 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         Category::destroy($id);
-        return redirect(route('category.index'))->with('success', 'Branch delete successfully');
+        return redirect(route('category.index'))->with('success', 'Category delete successfully');
     }
 }

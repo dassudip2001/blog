@@ -24,30 +24,30 @@ class RoleAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'edit-blog-posts']);
         Permission::create(['name' => 'delete-blog-posts']);
 
-        $adminRole = Role::create(['name' => 'Admin']);
-        $editorRole = Role::create(['name' => 'Editor']);
+        $adminRole = Role::create(['name' => 'admin']);
+        // $editorRole = Role::create(['name' => 'writer']);
 
-        $adminRole->givePermissionTo([
-            'create-users',
-            'edit-users',
-            'delete-users',
-            'create-blog-posts',
-            'edit-blog-posts',
-            'delete-blog-posts',
-        ]);
+        // $adminRole->givePermissionTo([
+        //     'create-users',
+        //     'edit-users',
+        //     'delete-users',
+        //     'create-blog-posts',
+        //     'edit-blog-posts',
+        //     'delete-blog-posts',
+        // ]);
 
-        $editorRole->givePermissionTo([
-            'create-blog-posts',
-            'edit-blog-posts',
-            'delete-blog-posts',
-        ]);
+        // $editorRole->givePermissionTo([
+        //     'create-blog-posts',
+        //     'edit-blog-posts',
+        //     'delete-blog-posts',
+        // ]);
 
-        $user = User::first();
+        // $user = User::first();
 
-        $user->assignRole('Admin');
+        // $user->assignRole('Admin');
 
-        $role = Role::findByName('Admin');
+        // $role = Role::findByName('Admin');
 
-        $role->givePermissionTo('edit-users');
+        // $role->givePermissionTo('edit-users');
     }
 }

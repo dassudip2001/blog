@@ -16,9 +16,11 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     {{-- category --}}
-                    <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')">
-                        {{ __('Category') }}
-                    </x-nav-link>
+                    @role('admin')
+                        <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')">
+                            {{ __('Category') }}
+                        </x-nav-link>
+                    @endrole
                     {{-- blog --}}
                     <x-nav-link :href="route('blog.index')" :active="request()->routeIs('blog.index')">
                         {{ __('Blog') }}
