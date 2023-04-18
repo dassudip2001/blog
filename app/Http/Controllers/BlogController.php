@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -17,9 +18,18 @@ class BlogController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $b = new Blog();
+//        $b->categoryName = $request->categoryName;
+//        $b->description = $request->description;
+
+        try {
+            $b->save();
+            return redirect(route('category.index'))->with('success', 'Branch Created successfully');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**
@@ -43,7 +53,8 @@ class BlogController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $b=Blog::find($id);
+        return view('category.edit')->with('success', 'Branch Created successfully');
     }
 
     /**
@@ -51,7 +62,16 @@ class BlogController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $b =  Blog::find($id);
+//        $b->categoryName = $request->categoryName;
+//        $b->description = $request->description;
+
+        try {
+            $b->save();
+            return redirect(route('category.index'))->with('success', 'Branch Created successfully');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**
@@ -59,6 +79,7 @@ class BlogController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Blog::destroy($id);
+        return redirect(route('category.index'))->with('success', 'Branch delete successfully');
     }
 }
