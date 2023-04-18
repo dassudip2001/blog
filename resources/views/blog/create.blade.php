@@ -6,5 +6,23 @@
     </x-slot>
 
     {{-- start  --}}
+    {{-- <div id="editor">This is some sample content.</div> --}}
+    <div class="mb-6">
+        <label for="department_details">Department Details</label>
+        <input type="text" class="form-control form-control  " name="description" id="editor"
+            aria-describedby="department_details" placeholder="Enter Department Description">
+    </div>
     {{-- end --}}
+    @section('script')
+        <script>
+            ClassicEditor
+                .create(document.querySelector('#editor'))
+                .then(editor => {
+                    console.log(editor);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        </script>
+    @endsection
 </x-app-layout>
