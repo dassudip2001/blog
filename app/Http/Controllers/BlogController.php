@@ -21,8 +21,11 @@ class BlogController extends Controller
     public function create(Request $request)
     {
         $b = new Blog();
-//        $b->categoryName = $request->categoryName;
-//        $b->description = $request->description;
+        $b->blogName = $request->blogName;
+        $b->blogDescription = $request->blogDescription;
+        $b->categoryId = $request->categoryId;
+
+
 
         try {
             $b->save();
@@ -53,7 +56,7 @@ class BlogController extends Controller
      */
     public function edit(string $id)
     {
-        $b=Blog::find($id);
+        $b = Blog::find($id);
         return view('category.edit')->with('success', 'Branch Created successfully');
     }
 
@@ -63,8 +66,9 @@ class BlogController extends Controller
     public function update(Request $request, string $id)
     {
         $b =  Blog::find($id);
-//        $b->categoryName = $request->categoryName;
-//        $b->description = $request->description;
+        $b->blogName = $request->blogName;
+        $b->blogDescription = $request->blogDescription;
+        $b->categoryId = $request->categoryId;
 
         try {
             $b->save();
