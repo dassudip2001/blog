@@ -44,3 +44,5 @@ Route::get('/blog/delete/{id}', [BlogController::class, 'destroy'])->name('blog.
 
 
 require __DIR__ . '/auth.php';
+
+// if(Auth::user()->id=='1' || auth()->user()->id==$id+1)

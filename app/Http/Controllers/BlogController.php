@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class BlogController extends Controller
@@ -61,8 +62,23 @@ class BlogController extends Controller
      */
     public function edit(string $id)
     {
-        $b = Blog::find($id);
-        return view('blog.edit', compact('b'))->with('success', 'Blog Created successfully');
+        if (Auth::user()->id == '1' || auth()->user()->id == $id) {
+
+            $c = Category::all();
+            $b = Blog::with(
+                [
+                    'categories' => function ($q) {
+                        $q->select(['id', 'categoryName', 'description',]);
+                    },
+
+
+                ]
+            )->find($id);
+
+            return view('blog.edit', compact('b', 'c'))->with('success', 'Blog Created successfully');
+        } else {
+            return "You are not allowed to edit this blog";
+        }
     }
 
     /**
@@ -70,16 +86,21 @@ class BlogController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $b =  Blog::find($id);
-        $b->blogName = $request->blogName;
-        $b->blogDescription = $request->blogDescription;
-        $b->categoryId = $request->categoryId;
+        if (Auth::user()->id == '1' || auth()->user()->id == $id) {
 
-        try {
-            $b->save();
-            return redirect(route('blog.index'))->with('success', 'Blog Created successfully');
-        } catch (\Throwable $th) {
-            throw $th;
+            $b =  Blog::find($id);
+            $b->blogName = $request->blogName;
+            $b->blogDescription = $request->blogDescription;
+            $b->categoryId = $request->categoryId;
+
+            try {
+                $b->save();
+                return redirect(route('blog.index'))->with('success', 'Blog Created successfully');
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+        } else {
+            return "You are not allowed to Delete this blog";
         }
     }
 
@@ -88,7 +109,12 @@ class BlogController extends Controller
      */
     public function destroy(string $id)
     {
-        Blog::destroy($id);
-        return redirect(route('blog.index'))->with('success', 'Blog delete successfully');
+        if (Auth::user()->id == '1' || auth()->user()->id == $id) {
+
+            Blog::destroy($id);
+            return redirect(route('blog.index'))->with('success', 'Blog delete successfully');
+        } else {
+            return "You are not allowed to Delete this blog";
+        }
     }
 }
