@@ -29,11 +29,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
-Route::post('/category', [CategoryController::class, 'create'])->name('category.create');
-Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
-Route::put('/category/edit/{id}', [CategoryController::class, 'update'])->name('category.update');
-Route::get('/category/delete/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+Route::get('/category', [CategoryController::class, 'index'])->name('category.index')->middleware('can:manage_users');
+Route::post('/category', [CategoryController::class, 'create'])->name('category.create')->middleware('can:manage_users');;
+Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit')->middleware('can:manage_users');;
+Route::put('/category/edit/{id}', [CategoryController::class, 'update'])->name('category.update')->middleware('can:manage_users');;
+Route::get('/category/delete/{id}', [CategoryController::class, 'destroy'])->name('category.destroy')->middleware('can:manage_users');;
 
 // blog
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
