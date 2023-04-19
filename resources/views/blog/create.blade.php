@@ -87,7 +87,7 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Blog Title</th>
-                            <th scope="col">Category</th>
+                            {{-- <th scope="col">Category</th> --}}
                             {{-- <th scope="col">Blog Contain</th> --}}
 
                             <th scope="col">Action</th>
@@ -100,10 +100,10 @@
                             <tr>
                                 <th scope="row">{{ $key + 1 }}</th>
                                 <td>{{ $pub->blogName }}</td>
-                                <td>{{ $pub->categoryName }}</td>
+                                {{-- <td>{{ $pub->categoryName }}</td> --}}
 
                                 {{-- <td>{{ $pub->blogDescription }}</td> --}}
-                                @if (Auth::user()->id == '1' || Auth::id() == $pub->id)
+                                {{-- @if (Auth::user()->id == '1' || Auth::id() == $pub->user_id->'id') --}}
                                     <td>
                                         <a style="color: black" href=" {{ url('/blog/edit', $pub->id) }} ">
                                             <i class="fa-regular fa-pen-to-square"></i>
@@ -116,7 +116,7 @@
                                         <i class="fa-sharp fa-solid fa-eye"></i>
                                     </a>
                                 </td> --}}
-                                @endif
+                                {{-- @endif --}}
                             </tr>
                         @endforeach
                     </tbody>

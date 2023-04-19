@@ -21,7 +21,7 @@
                         <label for="blogName">Blog Title<span class="required" style="color: red;">*</span></label>
                         <input type="text"
                             class="form-control form-control-sm  @error('blogName') is-invalid @enderror"
-                            name="blogName" id="blogName" aria-describedby="blogName" value="{{ $b->blogName }}"
+                            name="blogName" id="blogName" aria-describedby="blogName" value="{{ $d->blogName }}"
                             placeholder=" Books Name">
                     </div>
 
@@ -45,7 +45,7 @@
                         <label for="blogDescription">Describption</label>
                         <textarea type="text" class="form-control form-control-sm  @error('blogDescription') is-invalid @enderror"
                             name="blogDescription" id="editor" row="3" aria-describedby="blogDescription"
-                            placeholder="Enter Describption">{{ $b->blogDescription }}</textarea>
+                            placeholder="Enter Describption">{{ $d->blogDescription }}</textarea>
                     </div>
             </div>
             <hr>

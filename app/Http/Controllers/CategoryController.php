@@ -26,6 +26,8 @@ class CategoryController extends Controller
         $b = new Category();
         $b->categoryName = $request->categoryName;
         $b->description = $request->description;
+        $b->user_id = auth()->user()->id;
+
 
         try {
             $b->save();

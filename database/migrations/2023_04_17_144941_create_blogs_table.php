@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('blogName', 140)->index()->unique();
             $table->text('blogDescription');
             $table->unsignedBigInteger('categoryId');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }
