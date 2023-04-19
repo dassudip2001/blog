@@ -18,7 +18,7 @@ COPY . .
 
 RUN composer install
 
-RUN copy .env.example .env
+RUN cp .env.example .env        
 
 
 RUN php artisan optimize
