@@ -21,7 +21,7 @@ RUN composer install
 CMD php artisan serve --host=0.0.0.0 --port=8000
 
 
-FROM node:14-alpine as node
+FROM node:16-alpine as node
 
 WORKDIR /var/www
 COPY . .
