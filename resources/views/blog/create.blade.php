@@ -111,6 +111,11 @@
                                     <a style="color: red" href=" {{ url('/blog/delete', $pub->id) }} ">
                                         <button type="submit"><i class="fa-solid fa-trash"></i></button>
                                 </td>
+                                <td>
+                                    <a style="color: black" href=" {{ url('/blog/edit', $pub->id) }} ">
+                                        <i class="fa-sharp fa-solid fa-eye"></i>
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
