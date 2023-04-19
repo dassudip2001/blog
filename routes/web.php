@@ -41,6 +41,7 @@ Route::post('/blog', [BlogController::class, 'create'])->name('blog.create');
 Route::get('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
 Route::put('/blog/edit/{id}', [BlogController::class, 'update'])->name('blog.update');
 Route::get('/blog/delete/{id}', [BlogController::class, 'destroy'])->name('blog.destroy');
+Route::get('/blog/show/{id}', [BlogController::class, 'show'])->name('blog.show');
 
 
 require __DIR__ . '/auth.php';

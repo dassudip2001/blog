@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -54,7 +55,8 @@ class BlogController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $blog = Blog::find($id);
+        return view('blog.show', compact('blog'));
     }
 
     /**
@@ -62,7 +64,7 @@ class BlogController extends Controller
      */
     public function edit(string $id)
     {
-        if (Auth::user()->id == '1' || auth()->user()->id == $id) {
+        if (Auth::user()->id == '1' || Auth::user()->id == $id) {
 
             $c = Category::all();
             $b = Blog::with(

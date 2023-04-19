@@ -91,7 +91,7 @@
                             {{-- <th scope="col">Blog Contain</th> --}}
 
                             <th scope="col">Action</th>
-                            <th scope="col">Show</th>
+                            {{-- <th scope="col">Show</th> --}}
 
                         </tr>
                     </thead>
@@ -103,19 +103,20 @@
                                 <td>{{ $pub->categoryName }}</td>
 
                                 {{-- <td>{{ $pub->blogDescription }}</td> --}}
-
-                                <td>
-                                    <a style="color: black" href=" {{ url('/blog/edit', $pub->id) }} ">
-                                        <i class="fa-regular fa-pen-to-square"></i>
-                                    </a>
-                                    <a style="color: red" href=" {{ url('/blog/delete', $pub->id) }} ">
-                                        <button type="submit"><i class="fa-solid fa-trash"></i></button>
-                                </td>
-                                <td>
-                                    <a style="color: black" href=" {{ url('/blog/edit', $pub->id) }} ">
+                                @if (Auth::user()->id == '1' || Auth::id() == $pub->id)
+                                    <td>
+                                        <a style="color: black" href=" {{ url('/blog/edit', $pub->id) }} ">
+                                            <i class="fa-regular fa-pen-to-square"></i>
+                                        </a>
+                                        <a style="color: red" href=" {{ url('/blog/delete', $pub->id) }} ">
+                                            <button type="submit"><i class="fa-solid fa-trash"></i></button>
+                                    </td>
+                                    {{-- <td>
+                                    <a style="color: black" href=" {{ url('/blog/show', $pub->id) }} ">
                                         <i class="fa-sharp fa-solid fa-eye"></i>
                                     </a>
-                                </td>
+                                </td> --}}
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>
