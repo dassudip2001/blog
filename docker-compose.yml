@@ -8,7 +8,7 @@ services:
       - "8000:8000"
     environment:
       DB_HOST: db
-      DB_PORT: 3306
+      DB_PORT: 33066
       DB_DATABASE: laravel
       DB_USERNAME: root
       DB_PASSWORD: password
@@ -20,7 +20,12 @@ services:
     image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: laravel
+      # MYSQL_DATABASE: laravel
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: laravel
+      DB_USERNAME: root
+      DB_PASSWORD: password
     volumes:
       - db_data:/var/lib/mysql
 
