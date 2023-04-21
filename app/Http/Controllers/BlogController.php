@@ -156,4 +156,10 @@ class BlogController extends Controller
             abort(403);
         }
     }
+
+    public function view(string $id)
+    {
+        $blog = Blog::find($id);
+        return view('blog.view', compact('blog'));
+    }
 }

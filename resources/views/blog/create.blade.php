@@ -88,9 +88,10 @@
                             <th scope="col">#</th>
                             <th scope="col">Blog Title</th>
                             {{-- <th scope="col">Category</th> --}}
-                            {{-- <th scope="col">Blog Contain</th> --}}
+                            <th scope="col">Blog Contain</th>
 
                             <th scope="col">Action</th>
+                            <th>Show</th>
                             {{-- <th scope="col">Show</th> --}}
 
                         </tr>
@@ -102,7 +103,8 @@
                                 <td>{{ $pub->blogName }}</td>
                                 {{-- <td>{{ $pub->categoryName }}</td> --}}
 
-                                {{-- <td>{{ $pub->blogDescription }}</td> --}}
+                                {{-- <td>{!! html_entity_decode($pub->blogDescription) !!}</td> --}}
+                                <td>{{ Str::limit(strip_tags($pub->blogDescription), 200) }}...</td>
                                 {{-- @if (Auth::user()->id == '1' || Auth::id() == $pub->user_id->'id') --}}
                                     <td>
                                         <a style="color: black" href=" {{ url('/blog/edit', $pub->id) }} ">
@@ -110,6 +112,9 @@
                                         </a>
                                         <a style="color: red" href=" {{ url('/blog/delete', $pub->id) }} ">
                                             <button type="submit"><i class="fa-solid fa-trash"></i></button>
+                                    </td>
+                                    <td>
+                                    <a href="{{ route('blog.view', $pub->id) }}" class="btn btn-primary">View More</a>
                                     </td>
                                     {{-- <td>
                                     <a style="color: black" href=" {{ url('/blog/show', $pub->id) }} ">
@@ -129,6 +134,8 @@
 
     {{-- end --}}
     @section('script')
+     
+
         <script>
             ClassicEditor
                 .create(document.querySelector('#editor'))
