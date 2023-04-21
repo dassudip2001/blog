@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\User;
+use Illuminate\Support\Str;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -31,6 +33,7 @@ class BlogController extends Controller
         $b = new Blog();
         $b->blogName = $request->blogName;
         $b->blogDescription = $request->blogDescription;
+        $b->slug = Str::slug($request->blogName);
         $b->categoryId = $request->categoryId;
         $b->user_id = auth()->user()->id;
 
@@ -102,6 +105,7 @@ class BlogController extends Controller
             // The authenticated user is the same as the user who created the post
             // Delete the post
             $b->blogName = $request->blogName;
+            $b->slug = Str::slug($request->blogName);
             $b->blogDescription = $request->blogDescription;
             $b->categoryId = $request->categoryId;
 

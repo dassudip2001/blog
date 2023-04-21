@@ -24,9 +24,13 @@ Route::get('/', function () {
 });
 
 // show details post for with out login user
-Route::get('posts/{post}', function (App\Models\Blog $post) {
-    return view('posts.show', compact('post'));
+Route::get('posts/{post:slug}', function (App\Models\Blog $post) {
+    return view('posts.show', ['post' => $post]);
 })->name('posts.show');
+
+// Route::get('posts/{post:slug}', function (Post $post) {
+//     return view('posts.show', ['post' => $post]);
+// });
 
 
 Route::get('/aboutus', function () {
