@@ -120,6 +120,30 @@
     </div>
 
 
+    {{-- post contain --}}
+
+    <div class="container mt-2">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            @foreach ($showPost as $key => $pub)
+                {{-- {% for student in posts %} --}}
+                <div class="col">
+                    <div class="card">
+
+                        <div class="card-body">
+                            <h5 class="card-title"><b>{{ $pub->blogName }}</b></h5>
+                            <p class="card-text">{{ Str::limit(strip_tags($pub->blogDescription), 200) }}...</p>
+                        </div>
+                        <a href="{{ route('posts.show', $pub) }}" class="btn btn-primary">View More</a>
+                    </div>
+                </div>
+            @endforeach
+            {{-- {% endfor %} --}}
+        </div>
+        {{ $showPost->links() }}
+        {{-- {{ $showPost->onEachSide(10)->links() }} --}}
+    </div>
+
+
     {{-- </div> --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">

@@ -5,6 +5,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Models\Blog;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,8 +19,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $showPost = Blog::latest()->paginate(10);
+    return view('welcome', compact('showPost'));
 });
+
+// show details post for with out login user
+Route::get('posts/{post}', function (App\Models\Blog $post) {
+    return view('posts.show', compact('post'));
+})->name('posts.show');
+
+
 Route::get('/aboutus', function () {
     return view('aboutus');
 });
