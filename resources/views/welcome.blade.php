@@ -38,7 +38,7 @@
                             </li>
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">Login</a>
+                                <a class="nav-link" href="{{ route('login') }}"> Login</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
@@ -50,9 +50,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/aboutus') }}">About Us</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="#">Post</a>
-                    </li>
+                    </li> --}}
 
                 </ul>
                 {{-- <form class="d-flex">
@@ -121,6 +121,8 @@
 
 
     {{-- post contain --}}
+    {{-- {{ $showPost->links() }} --}}
+
 
     <div class="container mt-2">
         <div class="row row-cols-1 row-cols-md-2 g-4">
@@ -139,9 +141,9 @@
             @endforeach
             {{-- {% endfor %} --}}
         </div>
-        {{ $showPost->links() }}
-        {{-- {{ $showPost->onEachSide(10)->links() }} --}}
+        {{-- {{ $showPost->links() }} --}}
     </div>
+    {{-- {{ $showPost->onEachSide(10)->links() }} --}}
 
 
     {{-- </div> --}}

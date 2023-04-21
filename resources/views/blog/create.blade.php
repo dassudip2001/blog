@@ -42,7 +42,7 @@
                                         <input type="text"
                                             class="form-control form-control-sm  @error('blogName') is-invalid @enderror"
                                             name="blogName" id="blogName" aria-describedby="blogName"
-                                            placeholder=" Books Name">
+                                            placeholder=" Enter the blog title">
                                     </div>
 
                                     {{-- Category name --}}
@@ -126,7 +126,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{-- {{ $book->onEachSide(3)->links() }} --}}
+                {{ $blog->onEachSide(4)->links() }}
             </div>
         </div>
 

@@ -17,7 +17,7 @@ class BlogController extends Controller
     public function index()
     {
         $c = Category::get();
-        $blog = Blog::get();
+        $blog = Blog::latest()->paginate(4);
         // $blog = DB::table('blogs')
         //     ->join('categories', 'categories.id', '=', 'blogs.categoryId')->get();
         return view('blog.create', compact('blog', 'c'));
