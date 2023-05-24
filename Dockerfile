@@ -21,16 +21,16 @@ RUN composer install
 RUN cp .env.example .env        
 
 
-RUN php artisan optimize && php artisan migrate 
+RUN php artisan optimize
 
 CMD php artisan serve --host=0.0.0.0 --port=8000
 
 
-# FROM node:16-alpine as node
+FROM node:16-alpine as node
 
-# WORKDIR /var/www
-# COPY . .
+WORKDIR /var/www
+COPY . .
 
-# RUN npm install
+RUN npm install
 
-# CMD npm run dev
+CMD npm run dev
